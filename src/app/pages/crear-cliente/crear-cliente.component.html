@@ -1,0 +1,30 @@
+<h4 *ngIf="id_cliente == 0">Crear Cliente</h4>
+<h4 *ngIf="id_cliente != 0">Actualizar Cliente</h4>
+<div id="formContent">
+  <form [formGroup]="formClientes">
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Nombre Cliente</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Nombre Cliente"
+        formControlName="nombres_cliente">
+    </div><br>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Clave Publica</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Clave Publica"
+        formControlName="clave_publica_cliente">
+    </div><br>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Usuario</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Usuario" formControlName="usuario">
+    </div><br>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Contraseña</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Contraseña" formControlName="contrasena">
+    </div><br>
+    <div class="col-auto">
+      <button *ngIf="id_cliente == 0" class="btn btn-primary mb-3" (click)="postCreateCliente()">Crear</button>
+      <button *ngIf="id_cliente != 0" class="btn btn-primary mb-3" (click)="putActualizarCliente()">Actualizar</button>
+
+    </div>
+  </form>
+</div>
+

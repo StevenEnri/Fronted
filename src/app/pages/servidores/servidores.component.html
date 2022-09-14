@@ -1,0 +1,69 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse item-center" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home">Home<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/clientes">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sucursales">Sucursales</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/servidores">Servidores</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </nav>
+
+    <br>
+
+
+    <div>
+      <table class="table table-responsive">
+        <thead>
+          <th>Id Server</th>
+          <th>Id Sucursal</th>
+          <th>Id Nodo</th>
+          <th>Tipo Server</th>
+          <th>Clave Publica</th>
+          <th>Ip Publica</th>
+          <th>Port Wireguard</th>
+          <th>Subred</th>
+          <th>Ip Privada</th>
+          <th>DNS</th>
+
+          
+  
+  
+        </thead>
+        <tbody>
+          <tr *ngFor="let servidores of servidores">
+            <th>{{servidores.id_server}}</th>
+            <th>{{servidores.id_sucursal}}</th>
+            <th>{{servidores.id_nodo}}</th>
+            <th>{{servidores.tipo_server}}</th>
+            <th>{{servidores.clave_publica}}</th>
+            <th>{{servidores.ip_publica}}</th>
+            <th>{{servidores.port_wireguard}}</th>
+            <th>{{servidores.subred}}</th>
+            <th>{{servidores.ip_privada}}</th>
+            <th>{{servidores.dns}}</th>
+            
+  
+          </tr>
+        </tbody>
+      </table>
+  
+  
+    </div>
+  </header>

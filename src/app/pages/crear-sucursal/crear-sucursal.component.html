@@ -1,0 +1,19 @@
+<h4 *ngIf="id_sucursal == 0">Crear Sucursal</h4>
+<h4 *ngIf="id_sucursal != 0">Actualizar Sucursal</h4>
+<div id="formContent">
+  <form [formGroup]="formSucursal">
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Nombre Sucursal</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Nombre Sucursal"
+        formControlName="nombre_sucursal">
+    </div><br>
+    
+    <div class="col-auto">
+      <button *ngIf="id_sucursal == 0" class="btn btn-primary mb-3" (click)="postCreateSucursal()">Crear</button>
+      <button *ngIf="id_sucursal != 0" class="btn btn-primary mb-3" (click)="putActualizarSucursal()">Actualizar</button>
+
+    </div>
+  </form>
+</div>
+
+
