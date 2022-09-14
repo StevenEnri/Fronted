@@ -27,6 +27,13 @@
 
     <br>
 
+    <div style="display: flex; justify-content: center; align-items: center; width: 11%; margin-left: 80%;"
+    class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3" (click)="abrirDialogCrearServidor({id_server: 0})">Crear Servidor</button>
+  </div>
+
+  <br>
+
 
     <div>
       <table class="table table-responsive">
@@ -58,6 +65,12 @@
             <th>{{servidores.subred}}</th>
             <th>{{servidores.ip_privada}}</th>
             <th>{{servidores.dns}}</th>
+            <th>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3" (click)="abrirDialogCrearServidor(servidores)">Actualizar Datos</button>&nbsp;
+                <button type="submit" class="btn btn-primary mb-3" (click)="deleteEliminarServidor(servidores.id_server)">Eliminar</button>
+              </div>
+            </th>
             
   
           </tr>

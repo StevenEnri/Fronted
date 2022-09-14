@@ -1,0 +1,54 @@
+<h4 *ngIf="id_server == 0">Crear Sucursal</h4>
+<h4 *ngIf="id_server != 0">Actualizar Sucursal</h4>
+<div id="formContent">
+  <form [formGroup]="formServidor">
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">ID Sucursal</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="ID Sucursal"
+        formControlName="id_sucursal">
+    </div><br>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">ID Nodo</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="ID Nodo"
+        formControlName="id_nodo">
+    </div><br>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Tipo</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Tipo" formControlName="tipo_server">
+    </div><br>
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Clave Publica</label>
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Clave" formControlName="clave_publica">
+    </div><br>
+    <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">IP Publica</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="IP"
+          formControlName="ip_publica">
+      </div><br>
+      <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">Port Wireguard</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="Port"
+          formControlName="port_wireguard">
+      </div><br>
+      <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">Subred</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="Subred"
+          formControlName="subred">
+      </div><br>
+      <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">IP Privada</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="IP Privada"
+          formControlName="ip_privada">
+      </div><br>
+      <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">DNS</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="DNS"
+          formControlName="dns">
+      </div><br>
+    <div class="col-auto">
+      <button *ngIf="id_server == 0" class="btn btn-primary mb-3" (click)="postCreateServidor()">Crear</button>
+      <button *ngIf="id_server != 0" class="btn btn-primary mb-3" (click)="putActualizarServidor()">Actualizar</button>
+
+    </div>
+  </form>
+</div>

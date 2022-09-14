@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { MatDialog } from '@angular/material/dialog';
+
 import { ClientesService } from 'src/app/services/clientes.service';
+
+import {CrearClienteComponent} from '../crear-cliente/crear-cliente.component';
+
+import { Subscription } from "rxjs";
+import { CrearServidoresComponent } from '../crear-servidores/crear-servidores.component';
 
 @Component({
   selector: 'app-servidores',
@@ -8,31 +15,28 @@ import { ClientesService } from 'src/app/services/clientes.service';
   styleUrls: ['./servidores.component.css']
 })
 export class ServidoresComponent implements OnInit {
-  formServidor: FormGroup
+  token = localStorage.getItem('token') + '';
+  suscription: any;
+
+  
   servidores: Array<any> = [];
 
-  constructor(private fb: FormBuilder, private _servidor: ClientesService) { }
+  constructor(private _servidor: ClientesService, private dialog: MatDialog) { 
+
+    this.suscription=Subscription;
+  }
 
   ngOnInit(): void {
-    this.initform();
-    this.get();
-  }
-
-  initform() {
-    this.formServidor = this.fb.group({
-      id_server: ['', Validators.required],
-      id_sucursal: ['', Validators.required],
-      id_nodo:['', Validators.required],
-      tipo_server:['', Validators.required],
-      clave_publica:['', Validators.required],
-      ip_publica:['', Validators.required],
-      port_wireguard:['', Validators.required],
-      subred:['', Validators.required],
-      ip_privada:['', Validators.required],
-      dns:['', Validators.required]
-
+    this.get()
+    this.suscription=this._servidor.refresh$.subscribe(()=>{
+      this.get()
     })
   }
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe();
+  }
+
+  
 
   get() {
     let token = localStorage.getItem('token') + '';
@@ -43,6 +47,22 @@ export class ServidoresComponent implements OnInit {
       console.log(this.servidores)
     })
 
+  }
+  abrirDialogCrearServidor(server:any)
+  {
+    let dialog = this.dialog.open(CrearServidoresComponent, {
+      data: {server: server},
+      width: '50%',
+      height: '50%',
+      panelClass: 'my-class'
+    });
+    dialog.afterClosed().subscribe(res => {});
+  }
+  deleteEliminarServidor(id_server:number){
+    this._servidor.deleteServidores(this.token, id_server).subscribe((res:any)=>{
+      console.log(res);
+      
+    })
   }
 }
 

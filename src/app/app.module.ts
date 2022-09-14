@@ -15,6 +15,7 @@ import { SucursalesComponent } from './pages/sucursales/sucursales.component';
 import { ServidoresComponent } from './pages/servidores/servidores.component';
 import { CrearClienteComponent } from './pages/crear-cliente/crear-cliente.component';
 import { CrearSucursalComponent } from './pages/crear-sucursal/crear-sucursal.component';
+import { CrearServidoresComponent } from './pages/crear-servidores/crear-servidores.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CrearSucursalComponent } from './pages/crear-sucursal/crear-sucursal.co
     ServidoresComponent,
     CrearClienteComponent,
     CrearSucursalComponent,
+    CrearServidoresComponent,
   ],
   imports: [
     BrowserModule,

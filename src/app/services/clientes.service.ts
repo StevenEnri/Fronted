@@ -95,5 +95,37 @@ export class ClientesService {
     let headers = new HttpHeaders().set('access-token', token);
     return this.http.get(this.url+'/server', {headers: headers});
   }
+
+  postServidores(token:string,id_sucursal:number, id_nodo:number, tipo_server:string, clave_publica:string, ip_publica:string, port_wireguard:string, subred:string, ip_privada:string, dns:string): Observable<any>{
+    let headers = new HttpHeaders().set('access-token', token);
+    return this.http.post(this.url+'/server',{id_sucursal, id_nodo, tipo_server, clave_publica, ip_publica, port_wireguard, subred, ip_privada, dns}, {headers: headers})
+    .pipe(
+      tap(()=>{
+        this._refresh$.next()
+      })
+    )
+  }
+  putServidores(token:string, id_server:number,id_sucursal:number, id_nodo:number, tipo_server:string, clave_publica:string, ip_publica:string, port_wireguard:string, subred:string, ip_privada:string, dns:string ): Observable<any>{
+    let headers = new HttpHeaders().set('access-token', token);
+    return this.http.put(this.url+'/server',{id_server, id_sucursal, id_nodo, tipo_server, clave_publica, ip_publica, port_wireguard, subred, ip_privada, dns}, {headers: headers})
+    .pipe(
+      tap(()=>{
+        this._refresh$.next()
+      })
+    )
+  }
+  deleteServidores(token: string, id_server:number): Observable<any>{
+    let headers = new HttpHeaders().set('access-token', token);
+    let options= {id_server:id_server}
+    return this.http.delete(this.url+'/server', {headers: headers, body:options})
+    .pipe(
+      tap(()=>{
+        this._refresh$.next()
+      })
+    )
+
+
+
+  }
   
 }
